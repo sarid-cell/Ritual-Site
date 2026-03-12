@@ -4,7 +4,7 @@
 ![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
 ![Language](https://img.shields.io/badge/Language-HTML%2FCSS%2FJS-gold?style=for-the-badge)
 
-**[🔗 לצפייה באתר החי]([https://ritual-site.vercel.app]
+**[🔗 לצפייה באתר החי][https://ritual-site.vercel.app]
 
 ---
 
