@@ -205,25 +205,36 @@ ul,ol{list-style:none;}
 
 /* התאמה ספציפית למובייל */
 @media (max-width: 768px) {
-    /* חיסול הפס השחור במובייל */
-    .about-img-col, .about-img-col:hover {
-        height: auto !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .about-img-col img, .about-img-col:hover img {
-        height: auto !important;
-        transform: none !important; /* מבטל את הזום שמייצר את הפס השחור */
-        object-fit: contain !important;
-        max-height: none !important;
+    /* סידור מחדש: טקסט מעל תמונה */
+   section#about .container > .row {
+        display: flex !important;
+        flex-direction: column-reverse !important;
     }
 
-    /* סידור רווחים לציטוט */
+    .about-text.r {
+        text-align: center !important;
+        margin-bottom: 30px !important;
+    }
+
+    .about-img-col, .about-img-col:hover {
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 20px !important;
+    }
+
+    .about-img-col img, .about-img-col:hover img {
+        height: auto !important;
+        width: 100% !important;
+        transform: none !important;
+        object-fit: contain !important;
+    }
+
     #big-quote {
-        margin-top: 60px !important;    /* רווח נדיב מעל הציטוט */
-        margin-bottom: 60px !important; /* רווח נדיב מתחת לציטוט */
+        margin-top: 60px !important;
+        margin-bottom: 60px !important;
         padding: 40px 20px !important;
     }
+}
 
     #big-quote blockquote p {
         line-height: 1.8 !important;   /* נותן אוויר לשורות הטקסט בציטוט */
