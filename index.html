@@ -181,8 +181,34 @@ ul,ol{list-style:none;}
   border-radius:3px;
 }
 [dir="ltr"] .about-img-col{margin-inline-end:0;margin-inline-start:var(--px);}
-.about-img-col img{width:100% !important;height:auto !important;max-height:85vh !important;object-fit:contain !important;display:block !important;margin:0 auto !important;}
-.about-img-col:hover img{transform:scale(1.03);height:auto !important;max-height:85vh !important;}
+/* --- הוראות כלליות והתאמה למחשב (Desktop) --- */
+.about-img-col img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important; /* במחשב זה נראה מעולה ככה */
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.about-img-col:hover img {
+    transform: scale(1.03);
+}
+
+/* --- הוראות מיוחדות רק לטלפונים (Mobile) --- */
+@media (max-width: 768px) {
+    .about-img-col img {
+        max-height: 65vh !important; /* מגביל את הגובה בטלפון כדי שלא תיחתך */
+        object-fit: contain !important; /* מכריח את כל התמונה להיכנס למסך בלי חיתוך */
+        background-color: transparent; /* מוודא שאין רקע שחור */
+    }
+    
+    .about-img-col {
+        height: auto !important;
+        padding-bottom: 20px; /* נותן קצת אוויר מתחת לתמונה במובייל */
+    }
+}
+
 
 
 /* AS Badge — transparent, thin border, full circle */
