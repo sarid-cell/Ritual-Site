@@ -181,40 +181,39 @@ ul,ol{list-style:none;}
   border-radius:3px;
 }
 [dir="ltr"] .about-img-col{margin-inline-end:0;margin-inline-start:var(--px);}
-/* --- הוראות כלליות והתאמה למחשב (Desktop) --- */
+/* --- Desktop & Mobile Clean Fix --- */
+.about-img-col {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important; /* משחרר את הקופסה */
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
 .about-img-col img {
     width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important; /* במחשב זה נראה מעולה ככה */
-    display: block;
+    height: auto !important; /* הגובה נקבע לפי התמונה בלבד */
+    display: block !important;
+    object-fit: contain !important; /* מבטיח שרואים את כל אביה */
     margin: 0 auto;
     transition: transform 0.3s ease;
 }
 
 .about-img-col:hover img {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
-/* --- הוראות מיוחדות רק לטלפונים (Mobile) --- */
+/* התאמה ספציפית למובייל */
 @media (max-width: 768px) {
     .about-img-col {
-        height: auto !important; /* משחרר את הגובה של הקופסה */
-        min-height: 0 !important;
-        display: block !important;
-        padding: 0 !important;
+        width: 100% !important;
+        margin-bottom: 30px !important;
     }
-    
     .about-img-col img {
-        width: 100% !important; /* תופס את כל רוחב המסך */
-        height: auto !important; /* גובה גמיש לחלוטין - מונע חיתוך! */
-        max-height: none !important; /* מבטל כל הגבלת גובה קודמת */
-        object-fit: contain !important; /* מוודא שרואים את כל אביה */
-        display: block !important;
+        max-height: none !important;
     }
 }
-    }
-}
-
+   
 
 
 /* AS Badge — transparent, thin border, full circle */
