@@ -181,7 +181,7 @@ ul,ol{list-style:none;}
   border-radius:3px;
 }
 [dir="ltr"] .about-img-col{margin-inline-end:0;margin-inline-start:var(--px);}
-.about-img-col img{width:100%;height:auto;object-fit:cover;object-position:center top;filter:brightness(1);}
+.about-img-col img{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto;filter:brightness(1);}
 .about-img-col:hover img{transform:scale(1.025);filter:brightness(1) saturate(1);}
 
 /* AS Badge — transparent, thin border, full circle */
@@ -408,9 +408,6 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
      src="avia-new.jpg" 
      alt="אביה שריד - Ritual - מומחית לעיצוב גבות פרימיום" 
      width="900" height="1100" loading="lazy">
-    <div class="badge" id="badge" aria-hidden="true">
-      <span class="lbl lhe">א.ש</span>
-      <span class="lbl len">AS</span>
     </div>
   </div>
 </section>
