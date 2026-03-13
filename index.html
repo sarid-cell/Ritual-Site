@@ -442,8 +442,9 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
     }
 }
  @media (max-width: 960px) {
+#about { overflow: visible !important; }
   .about-img-col:hover img { transform: none !important; }
-  #big-quote { padding: 48px 24px !important; }
+#big-quote { padding: 48px 24px !important; margin: 0 !important; }
   #contact { grid-template-columns: 1fr; }
   .svc-grid { grid-template-columns: repeat(2,1fr); max-width: 480px; }
   .principles-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
