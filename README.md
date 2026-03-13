@@ -5,7 +5,7 @@
 ![Language](https://img.shields.io/badge/Language-HTML%2FCSS%2FJS-6b705c?style=for-the-badge)
 ![Design](https://img.shields.io/badge/Design-Premium%20Minimalism-d4a373?style=for-the-badge)
 
-**[🔗 לצפייה באתר החי של Ritual](https://ritual-site-six.vercel.app/)**
+**[🔗 לצפייה באתר החי של Ritual](https://www.ritualbyavia.co.il/)**
 
 ---
 
