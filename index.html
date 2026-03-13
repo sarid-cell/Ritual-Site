@@ -197,15 +197,21 @@ ul,ol{list-style:none;}
 
 /* --- הוראות מיוחדות רק לטלפונים (Mobile) --- */
 @media (max-width: 768px) {
-    .about-img-col img {
-        max-height: 65vh !important; /* מגביל את הגובה בטלפון כדי שלא תיחתך */
-        object-fit: contain !important; /* מכריח את כל התמונה להיכנס למסך בלי חיתוך */
-        background-color: transparent; /* מוודא שאין רקע שחור */
+    .about-img-col {
+        height: auto !important; /* משחרר את הגובה של הקופסה */
+        min-height: 0 !important;
+        display: block !important;
+        padding: 0 !important;
     }
     
-    .about-img-col {
-        height: auto !important;
-        padding-bottom: 20px; /* נותן קצת אוויר מתחת לתמונה במובייל */
+    .about-img-col img {
+        width: 100% !important; /* תופס את כל רוחב המסך */
+        height: auto !important; /* גובה גמיש לחלוטין - מונע חיתוך! */
+        max-height: none !important; /* מבטל כל הגבלת גובה קודמת */
+        object-fit: contain !important; /* מוודא שרואים את כל אביה */
+        display: block !important;
+    }
+}
     }
 }
 
