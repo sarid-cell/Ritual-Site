@@ -205,16 +205,31 @@ ul,ol{list-style:none;}
 
 /* התאמה ספציפית למובייל */
 @media (max-width: 768px) {
-    .about-img-col {
-        width: 100% !important;
-        margin-bottom: 30px !important;
+    /* חיסול הפס השחור במובייל */
+    .about-img-col, .about-img-col:hover {
+        height: auto !important;
+        margin-bottom: 20px !important;
     }
-    .about-img-col img {
+    
+    .about-img-col img, .about-img-col:hover img {
+        height: auto !important;
+        transform: none !important; /* מבטל את הזום שמייצר את הפס השחור */
+        object-fit: contain !important;
         max-height: none !important;
     }
-}
-   
 
+    /* סידור רווחים לציטוט */
+    #big-quote {
+        margin-top: 60px !important;    /* רווח נדיב מעל הציטוט */
+        margin-bottom: 60px !important; /* רווח נדיב מתחת לציטוט */
+        padding: 40px 20px !important;
+    }
+
+    #big-quote blockquote p {
+        line-height: 1.8 !important;   /* נותן אוויר לשורות הטקסט בציטוט */
+    }
+}
+ 
 
 /* AS Badge — transparent, thin border, full circle */
 .badge{
