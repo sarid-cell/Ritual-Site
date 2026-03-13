@@ -703,7 +703,8 @@ var D = {
     /* Carbon */
     carbonH2:'Hollywood Carbon Peel — פחם פעיל + לייזר',
     carbonSub:'שילוב ייחודי של פחם פעיל ולייזר Q-Switched לניקוי עמוק של הנקבוביות, צמצום שמנוניות, אחידות גוון עור וזוהר מיידי — ללא זמן השבתה.',
-    /* Contact form */
+    cl1:'ניקוי עמוק של נקבוביות וסבוריאה',cl2:'צמצום כתמים ועידון מרקם',cl3:'זוהר מיידי — אפקט skin glass',cl4:'ללא כאב, ללא זמן השבתה',cl5:'מתאים לכל סוגי העור',cl6:'תוצאות נראות כבר בטיפול הראשון',carbonSafetyTitle:'הערת בטיחות חשובה:',carbonSafetyText:'הטיפול אינו מתאים בתקופת נטילת רואקוטן (ו-6 חודשים לאחר סיום), בהריון ובהנקה. יש לציין תרופות ומצבים רפואיים רלוונטיים לפני הטיפול.',
+   /* Contact form */
     cfH2:'השאירי פרטים, ונתאם לך רגע של שקט ודיוק במרחב.',
     cfSub:'ממלאים, ואביה חוזרת בהקדם לתיאום ייעוץ.',
     lName:'שם', lPhone:'טלפון', lMsg:'איך אוכל לעזור לך?',
@@ -749,7 +750,8 @@ var D = {
     carbonH2:'Hollywood Carbon Peel — Active Charcoal + Laser',
     carbonPill:'Special Treatment',
     carbonSub:'A unique combination of active charcoal and Q-Switched laser for deep pore cleansing, reduced oiliness, even skin tone and instant radiance — with zero downtime.',
-    cfH2:'Leave Your Details — We Will Find You a Moment of Calm and Precision.',
+   cl1:'Deep cleansing of pores and seborrhea',cl2:'Reduction of spots and skin texture refinement',cl3:'Instant glow — skin glass effect',cl4:'No pain, zero downtime',cl5:'Suitable for all skin types',cl6:'Results visible from the first treatment',carbonSafetyTitle:'Important Safety Note:',carbonSafetyText:'This treatment is not suitable during Roaccutane use (and 6 months after), during pregnancy or breastfeeding. Please inform us of any medications or relevant medical conditions before treatment.',
+   cfH2:'Leave Your Details — We Will Find You a Moment of Calm and Precision.',
     cfSub:"Fill in your details and Avia will get back to you shortly.",
     lName:'Name', lPhone:'Phone', lMsg:'How can I help you?',
     fMsgPh:'How can I help you?',
@@ -806,6 +808,9 @@ function applyLang(l) {
   /* Carbon */
   set('carbonH2',t.carbonH2); set('carbonSub',t.carbonSub);
   if(t.carbonPill){ var pill=document.querySelector('.carbon-pill-text'); if(pill) pill.textContent=t.carbonPill; }
+ for(var i=1;i<=6;i++){var li=document.getElementById('cl'+i);if(li){var svg=li.querySelector('svg');li.textContent=t['cl'+i];if(svg)li.insertBefore(svg,li.firstChild);}}
+set('carbonSafetyTitle',t.carbonSafetyTitle);
+set('carbonSafetyText',t.carbonSafetyText);
   /* Contact form */
   set('cfH2',t.cfH2); set('cfSub',t.cfSub);
   set('lName',t.lName); set('lPhone',t.lPhone); set('lMsg',t.lMsg);
