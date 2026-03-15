@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" id="root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדיניות פרטיות — RITUAL by Avia Sarid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--bg:#F9F7F2;--text:#4A433A;--body:#6B6460;--gold:#B8A96A;--dark:#252220;}
+    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);font-weight:300;line-height:1.8;}
+    nav{background:var(--bg);border-bottom:1px solid rgba(74,67,58,0.1);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:0.15em;color:var(--text);text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:16px;}
+    .back-link{font-size:0.85rem;color:var(--body);text-decoration:none;}
+    .back-link:hover{color:var(--text);}
+    .btn-lang{font-family:'Heebo',sans-serif;font-size:0.8rem;font-weight:400;letter-spacing:0.08em;background:transparent;border:1px solid rgba(74,67,58,0.3);border-radius:20px;padding:4px 14px;cursor:pointer;color:var(--text);}
+    .btn-lang:hover{background:rgba(74,67,58,0.05);}
+    main{max-width:760px;margin:0 auto;padding:60px 24px 100px;}
+    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:300;margin-bottom:8px;color:var(--text);}
+    .subtitle{color:var(--gold);font-size:0.9rem;letter-spacing:0.1em;margin-bottom:48px;text-transform:uppercase;}
+    .divider{width:40px;height:1px;background:var(--gold);margin:32px 0;}
+    h2{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px;color:var(--text);}
+    p{color:var(--body);margin-bottom:20px;font-size:1rem;}
+    .contact-box{background:var(--dark);color:#E8E3DC;padding:32px 40px;border-radius:4px;margin-top:48px;}
+    .contact-box h2{color:var(--gold);}
+    .contact-box p{color:#C0B8B0;}
+    .contact-box a{color:var(--gold);text-decoration:none;}
+    .date{font-size:0.8rem;color:var(--body);margin-top:48px;opacity:0.7;}
+    footer{text-align:center;padding:24px;border-top:1px solid rgba(74,67,58,0.1);font-size:0.8rem;color:var(--body);}
+    footer a{color:inherit;}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">RITUAL</a>
+  <div class="nav-right">
+    <button class="btn-lang" onclick="toggleLang()" id="langBtn">EN</button>
+    <a href="/" class="back-link" id="backLink">← חזרה לאתר</a>
+  </div>
+</nav>
+<main>
+  <p class="subtitle">RITUAL by Avia Sarid</p>
+  <h1 id="pageTitle">מדיניות פרטיות</h1>
+  <div class="divider"></div>
+  <h2 id="whoTitle">מי אנחנו</h2>
+  <p id="whoText">RITUAL by Avia Sarid הינו סטודיו לטיפולי יופי בעמק חפר, הפועל במרחב אחיטוב ובקליניקה במשמרת. בעלת העסק: אביה שריד.</p>
+  <div class="divider"></div>
+  <h2 id="collectTitle">אילו פרטים נאספים</h2>
+  <p id="collectText">בעת מילוי טופס יצירת קשר באתר נאספים: שם מלא, מספר טלפון, והודעה חופשית. הפרטים מועברים ישירות דרך WhatsApp ואינם נשמרים במסד נתונים.</p>
+  <div class="divider"></div>
+  <h2 id="useTitle">לשם מה משתמשים בפרטים</h2>
+  <p id="useText">הפרטים משמשים אך ורק לתיאום פגישות וייעוץ עם אביה שריד. לא נעשה בהם שימוש למטרות שיווק, ולא מועברים לצד שלישי כלשהו.</p>
+  <div class="divider"></div>
+  <h2 id="analyticsTitle">Google Analytics</h2>
+  <p id="analyticsText">האתר משתמש ב-Google Analytics לצורך ניתוח תנועת גולשים. המידע הנאסף הינו אנונימי לחלוטין ואינו כולל פרטים מזהים אישיים.</p>
+  <div class="divider"></div>
+  <h2 id="cookiesTitle">עוגיות (Cookies)</h2>
+  <p id="cookiesText">האתר עושה שימוש מינימלי בעוגיות, לצרכי ניתוח סטטיסטי בלבד.</p>
+  <div class="divider"></div>
+  <h2 id="rightsTitle">זכויותך</h2>
+  <p id="rightsText">בהתאם לחוק הגנת הפרטיות הישראלי, יש לך זכות לעיין במידע שנמסר, לתקנו או לבקש את מחיקתו.</p>
+  <div class="contact-box">
+    <h2 id="contactTitle">יצירת קשר</h2>
+    <p id="contactText">לכל שאלה בנוגע למדיניות זו:</p>
+    <p>WhatsApp: <a href="https://wa.me/9720508724699">050-872-4699</a></p>
+  </div>
+  <p class="date" id="dateText">עדכון אחרון: מרץ 2026</p>
+</main>
+<footer>
+  <span>© 2026 RITUAL by Avia Sarid · </span><a href="/" id="footerBack">חזרה לאתר</a>
+</footer>
+<script>
+var lang='he';
+var D={
+  he:{
+    htmlLang:'he',dir:'rtl',langBtn:'EN',
+    pageTitle:'מדיניות פרטיות',
+    backLink:'← חזרה לאתר',
+    whoTitle:'מי אנחנו',
+    whoText:'RITUAL by Avia Sarid הינו סטודיו לטיפולי יופי בעמק חפר, הפועל במרחב אחיטוב ובקליניקה במשמרת. בעלת העסק: אביה שריד.',
+    collectTitle:'אילו פרטים נאספים',
+    collectText:'בעת מילוי טופס יצירת קשר באתר נאספים: שם מלא, מספר טלפון, והודעה חופשית. הפרטים מועברים ישירות דרך WhatsApp ואינם נשמרים במסד נתונים.',
+    useTitle:'לשם מה משתמשים בפרטים',
+    useText:'הפרטים משמשים אך ורק לתיאום פגישות וייעוץ עם אביה שריד. לא נעשה בהם שימוש למטרות שיווק, ולא מועברים לצד שלישי כלשהו.',
+    analyticsTitle:'Google Analytics',
+    analyticsText:'האתר משתמש ב-Google Analytics לצורך ניתוח תנועת גולשים. המידע הנאסף הינו אנונימי לחלוטין ואינו כולל פרטים מזהים אישיים.',
+    cookiesTitle:'עוגיות (Cookies)',
+    cookiesText:'האתר עושה שימוש מינימלי בעוגיות, לצרכי ניתוח סטטיסטי בלבד.',
+    rightsTitle:'זכויותך',
+    rightsText:'בהתאם לחוק הגנת הפרטיות הישראלי, יש לך זכות לעיין במידע שנמסר, לתקנו או לבקש את מחיקתו.',
+    contactTitle:'יצירת קשר',
+    contactText:'לכל שאלה בנוגע למדיניות זו:',
+    dateText:'עדכון אחרון: מרץ 2026',
+    footerBack:'חזרה לאתר'
+  },
+  en:{
+    htmlLang:'en',dir:'ltr',langBtn:'עב',
+    pageTitle:'Privacy Policy',
+    backLink:'← Back to Site',
+    whoTitle:'Who We Are',
+    whoText:'RITUAL by Avia Sarid is a beauty treatment studio in Emek Hefer, operating in Achituv and Mishmeret. Business owner: Avia Sarid.',
+    collectTitle:'What Information We Collect',
+    collectText:'When filling out a contact form on the website, we collect: full name, phone number, and a free message. Details are sent directly via WhatsApp and are not stored in any database.',
+    useTitle:'How We Use Your Information',
+    useText:'Your details are used solely for scheduling appointments and consultations with Avia Sarid. They are not used for marketing purposes and are not shared with any third party.',
+    analyticsTitle:'Google Analytics',
+    analyticsText:'This website uses Google Analytics to analyze visitor traffic. All data collected is completely anonymous and does not include any personally identifying information.',
+    cookiesTitle:'Cookies',
+    cookiesText:'This website uses minimal cookies for statistical analysis purposes only.',
+    rightsTitle:'Your Rights',
+    rightsText:'In accordance with Israeli privacy protection law, you have the right to review, correct, or request deletion of any information you have provided.',
+    contactTitle:'Contact Us',
+    contactText:'For any questions regarding this policy:',
+    dateText:'Last updated: March 2026',
+    footerBack:'Back to Site'
+  }
+};
+function applyLang(l){
+  var t=D[l];
+  var root=document.getElementById('root');
+  root.setAttribute('lang',t.htmlLang);
+  root.setAttribute('dir',t.dir);
+  document.getElementById('langBtn').textContent=t.langBtn;
+  document.getElementById('backLink').textContent=t.backLink;
+  document.getElementById('pageTitle').textContent=t.pageTitle;
+  document.getElementById('whoTitle').textContent=t.whoTitle;
+  document.getElementById('whoText').textContent=t.whoText;
+  document.getElementById('collectTitle').textContent=t.collectTitle;
+  document.getElementById('collectText').textContent=t.collectText;
+  document.getElementById('useTitle').textContent=t.useTitle;
+  document.getElementById('useText').textContent=t.useText;
+  document.getElementById('analyticsTitle').textContent=t.analyticsTitle;
+  document.getElementById('analyticsText').textContent=t.analyticsText;
+  document.getElementById('cookiesTitle').textContent=t.cookiesTitle;
+  document.getElementById('cookiesText').textContent=t.cookiesText;
+  document.getElementById('rightsTitle').textContent=t.rightsTitle;
+  document.getElementById('rightsText').textContent=t.rightsText;
+  document.getElementById('contactTitle').textContent=t.contactTitle;
+  document.getElementById('contactText').textContent=t.contactText;
+  document.getElementById('dateText').textContent=t.dateText;
+  document.getElementById('footerBack').textContent=t.footerBack;
+}
+function toggleLang(){lang=lang==='he'?'en':'he';applyLang(lang);}
+applyLang('he');
+</script>
+</body>
+</html>
