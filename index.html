@@ -450,8 +450,8 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
 .btn-book-mobile{width:100%;background:var(--cta);color:var(--white);border-radius:34px;padding:14px;font-size:.9rem;font-weight:400;margin-top:8px;transition:background .22s;}
 .btn-book-mobile:hover{background:#443e38;}
 .btn-book-mobile:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
-.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(37,34,32,.3);z-index:480;opacity:0;transition:opacity .3s;}
-.mobile-overlay.open{opacity:1;}
+.mobile-overlay{position:fixed;inset:0;background:rgba(37,34,32,.3);z-index:480;opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-overlay.open{opacity:1;pointer-events:auto;}
 @media(max-width:960px){
   .nav-burger{display:flex;}
   .mobile-menu{display:block;}
