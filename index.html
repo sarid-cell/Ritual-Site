@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
- <link rel="icon" type="image/svg+xml" href="/logo.svg">
-<link rel="apple-touch-icon" href="/logo.svg">
-<meta property="og:image" content="https://www.ritualbyavia.co.il/og-image.png">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTC677VX5C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WTC677VX5C');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>RITUAL | אביה שריד — עיצוב גבות פרימיום בעמק חפר</title>
 <meta name="description" content="RITUAL by Avia Sarid — מומחית לעיצוב גבות בעמק חפר, קליניקות באחיטוב ובמשמרת. Powder Shading, Microblading, הסרת איפור קבוע בלייזר, Hollywood Carbon Peel.">
 <meta name="robots" content="index, follow">
- <script type="application/ld+json">
+<link rel="canonical" href="https://www.ritualbyavia.co.il/">
+<meta name="theme-color" content="#F9F7F2">
+<!-- Open Graph -->
+<meta property="og:title" content="RITUAL | אביה שריד — עיצוב גבות פרימיום">
+<meta property="og:description" content="מומחית לעיצוב גבות בעמק חפר — דיוק, עדינות, נוכחות.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.ritualbyavia.co.il/">
+<meta property="og:image" content="https://www.ritualbyavia.co.il/og-image.png">
+<meta property="og:locale" content="he_IL">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RITUAL | אביה שריד — עיצוב גבות פרימיום">
+<meta name="twitter:description" content="מומחית לעיצוב גבות בעמק חפר — דיוק, עדינות, נוכחות.">
+<meta name="twitter:image" content="https://www.ritualbyavia.co.il/og-image.png">
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="apple-touch-icon" href="/logo.svg">
+<!-- Structured Data -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
@@ -45,9 +51,15 @@
   ]
 }
 </script>
-<meta property="og:title" content="RITUAL | אביה שריד — עיצוב גבות פרימיום">
-<meta property="og:description" content="מומחית לעיצוב גבות בעמק חפר — דיוק, עדינות, נוכחות.">
-<meta property="og:type" content="website">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTC677VX5C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WTC677VX5C');
+</script>
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style"
@@ -416,6 +428,36 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
 .wa-fab:focus-visible{outline:3px solid rgba(37,211,102,.5);outline-offset:3px;}
 .wa-fab svg{width:26px;height:26px;fill:white;}
 
+/* ════ HAMBURGER / MOBILE NAV ════ */
+.nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;padding:8px;cursor:pointer;flex-shrink:0;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:transform .3s var(--ease),opacity .3s;}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{
+  display:none;position:fixed;inset:var(--nav-h) 0 auto 0;
+  background:rgba(249,247,242,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:24px var(--px) 32px;z-index:490;
+  border-bottom:1px solid rgba(74,67,58,.1);
+  transform:translateY(-8px);opacity:0;pointer-events:none;
+  transition:transform .3s var(--ease),opacity .3s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+.mobile-menu ul{display:flex;flex-direction:column;margin-bottom:20px;}
+.mobile-menu ul a{display:block;padding:14px 0;font-size:1rem;font-weight:300;color:var(--body);border-bottom:1px solid rgba(74,67,58,.07);transition:color .2s;}
+.mobile-menu ul a:hover{color:var(--text);}
+.mobile-menu ul a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.btn-book-mobile{width:100%;background:var(--cta);color:var(--white);border-radius:34px;padding:14px;font-size:.9rem;font-weight:400;margin-top:8px;transition:background .22s;}
+.btn-book-mobile:hover{background:#443e38;}
+.btn-book-mobile:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(37,34,32,.3);z-index:480;opacity:0;transition:opacity .3s;}
+.mobile-overlay.open{opacity:1;}
+@media(max-width:960px){
+  .nav-burger{display:flex;}
+  .mobile-menu{display:block;}
+  .mobile-overlay{display:block;}
+}
+
 /* ════ REVEAL ════ */
 .r{opacity:0;transform:translateY(28px);transition:opacity .95s var(--ease),transform .95s var(--ease);}
 .r.v{opacity:1;transform:translateY(0);}
@@ -427,52 +469,39 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
 
 /* ════ RESPONSIVE ════ */
 @media (max-width: 960px) {
-    .hero-h1 { 
-        white-space: normal; 
-        font-size: clamp(2rem, 8.5vw, 3.2rem); 
-        line-height: 1.18; 
-    }
-    
-    #about {
-        display: flex !important;
-        flex-direction: column-reverse !important;
-        height: auto !important;
-    }
-
-    .about-img-col {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-    }
-
-    .about-img-col img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        object-fit: contain !important;
-        transform: none !important;
-        transition: none !important;
-        pointer-events: none;
-    }
-
-    .about-text {
-        width: 100% !important;
-        padding: 40px 24px !important;
-        text-align: center !important;
-    }
-
-    .about-p { 
-        max-width: 100% !important; 
-    }
-}
- @media (max-width: 960px) {
-#about { overflow: visible !important; }
-  .about-img-col { border-radius: 0 !important; }
+  .hero-h1 { white-space: normal; font-size: clamp(2rem, 8.5vw, 3.2rem); line-height: 1.18; }
+  #about {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .about-img-col {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+  }
+  .about-img-col img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: none;
+  }
   .about-img-col:hover img { transform: none !important; }
-#big-quote { padding: 32px 24px !important; margin: 0 !important; }
+  .about-text {
+    width: 100% !important;
+    padding: 40px 24px !important;
+    text-align: center !important;
+  }
+  .about-p { max-width: 100% !important; }
+  #big-quote { padding: 32px 24px !important; margin: 0 !important; }
   #contact { grid-template-columns: 1fr; }
   .svc-grid { grid-template-columns: repeat(2,1fr); max-width: 480px; }
   .principles-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -534,8 +563,20 @@ html { overflow-x: hidden !important; }
   <div class="nav-actions">
     <button class="btn-lang" id="langBtn" aria-label="Switch to English" onclick="toggleLang()">EN</button>
     <button class="btn-book-nav" id="nBook" onclick="goTo('contact')">הזמן ייעוץ</button>
+    <button class="nav-burger" id="navBurger" aria-label="תפריט" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="תפריט מובייל" aria-hidden="true">
+  <ul role="list">
+    <li><a href="#about"    id="mmAbout"    onclick="closeMobileMenu()">אודות</a></li>
+    <li><a href="#services" id="mmServices" onclick="closeMobileMenu()">שירותים</a></li>
+    <li><a href="#contact"  id="mmContact"  onclick="closeMobileMenu()">צור קשר</a></li>
+  </ul>
+  <button class="btn-book-mobile" id="mmBook" onclick="closeMobileMenu();goTo('contact')">הזמן ייעוץ</button>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()" aria-hidden="true"></div>
 <main id="main">
 <section id="hero" aria-labelledby="heroH1">
   <div class="hero-dots a1" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -543,7 +584,7 @@ html { overflow-x: hidden !important; }
   <p id="heroSub" class="hero-sub a3">עידן חדש של אמנות הגבות. טקס של רוגע, ביטחון ויופי טבעי. RITUAL By Avia Sarid הופך את עיצוב הגבות לרגע אישי של טיפוח — טקס שמחזיר נוכחות, הרמוניה ויופי נצחי.</p>
   <div class="hero-actions a4">
     <button id="btnBook" class="btn-primary" onclick="goTo('contact')">הזמן ייעוץ</button>
-    <a id="btnWa" href="https://wa.me/9720508724699" target="_blank" rel="noopener" class="btn-wa-text" aria-label="WhatsApp לאביה שריד">WhatsApp אביה ←</a>
+    <a id="btnWa" href="https://wa.me/972508724699" target="_blank" rel="noopener" class="btn-wa-text" aria-label="WhatsApp לאביה שריד">WhatsApp אביה ←</a>
   </div>
   <div id="scrollArrow" class="scroll-arrow" role="button" tabindex="0" aria-label="גלול למטה"
        onclick="goTo('about')" onkeydown="if(event.key==='Enter')goTo('about')">
@@ -556,14 +597,16 @@ html { overflow-x: hidden !important; }
     <h2 class="about-h2" id="aboutH2">הכירו את אביה —</h2>
     <p class="about-ital" id="aboutItal">האמנית מאחורי הטקס</p>
     <p class="about-p" id="aboutP">אביה שריד היא אמנית גבות פרימיום הידועה בסגנון רך, טבעי ומינימליסטי שלה. מומחית לעיצוב גבות בעמק חפר, עם קליניקות באחיטוב ובמשמרת. לאחר שנים של עבודה בתעשיית היופי, אביה בחרה ליצור מרחב שבו דיוק, עדינות ונוכחות הם הבסיס לכל טיפול.</p>
+    <blockquote class="about-bq">
+      <p id="aboutQ">RITUAL הוא מרחב שבו הטיפול הופך לרגע של שלווה, והתוצאה מרגישה ללא מאמץ.</p>
+    </blockquote>
   </div>
   <div class="about-img-col r" style="transition-delay:.18s">
-   <img id="aboutImg" 
-     src="avia-new.jpg" 
-     alt="אביה שריד - Ritual - מומחית לעיצוב גבות פרימיום" 
+   <img id="aboutImg"
+     src="avia-new.jpg"
+     alt="אביה שריד - Ritual - מומחית לעיצוב גבות פרימיום"
      width="900" height="1100" loading="lazy">
     </div>
-  </div>
 </section>
 <section id="big-quote" aria-label="ציטוט RITUAL">
   <div class="bq-wrapper r">
@@ -574,6 +617,7 @@ html { overflow-x: hidden !important; }
   </div>
 </section>
 <section id="principles" aria-labelledby="pricH2">
+  <p class="principles-label" id="pricLabel">הפילוסופיה שלנו</p>
   <h2 class="principles-h2" id="pricH2">הפילוסופיה של Ritual</h2>
   <div class="principles-grid">
     <div class="p-card r">
@@ -684,7 +728,7 @@ html { overflow-x: hidden !important; }
     <div class="info-row">
       <div class="info-txt">
         <p class="info-lbl" id="telLbl">טלפון</p>
-        <p class="info-val"><a href="tel:+9720508724699">050-872-4699</a></p>
+        <p class="info-val"><a href="tel:+972508724699">050-872-4699</a></p>
       </div>
       <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1.09h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
     </div>
@@ -695,7 +739,7 @@ html { overflow-x: hidden !important; }
       </div>
       <div class="info-ico"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
     </div>
-    <a href="https://wa.me/9720508724699" target="_blank" rel="noopener" class="btn-msg-wa" id="btnMsgWa">שלחי הודעה ב-WhatsApp ←</a>
+    <a href="https://wa.me/972508724699" target="_blank" rel="noopener" class="btn-msg-wa" id="btnMsgWa">שלחי הודעה ב-WhatsApp ←</a>
   </div>
 </section>
 </main>
@@ -716,7 +760,7 @@ html { overflow-x: hidden !important; }
   </div>
   <div class="foot-bottom" id="footCopy">&copy; 2026 Ritual By Avia Sarid. All rights reserved. | Designed by Shira Sarid</div>
 </footer>
-<a href="https://wa.me/9720508724699" target="_blank" rel="noopener" class="wa-fab" aria-label="WhatsApp אביה שריד">
+<a href="https://wa.me/972508724699" target="_blank" rel="noopener" class="wa-fab" aria-label="WhatsApp אביה שריד">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
@@ -724,6 +768,22 @@ html { overflow-x: hidden !important; }
 <script>
 /* ── Scroll helper (avoids conflict with window.scrollTo) ── */
 function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+
+/* ── Mobile menu ── */
+function toggleMobileMenu(){var m=document.getElementById('mobileMenu');if(m.classList.contains('open'))closeMobileMenu();else openMobileMenu();}
+function openMobileMenu(){
+  var b=document.getElementById('navBurger'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay');
+  b.classList.add('open');b.setAttribute('aria-expanded','true');
+  m.classList.add('open');m.setAttribute('aria-hidden','false');
+  o.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeMobileMenu(){
+  var b=document.getElementById('navBurger'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay');
+  if(!b||!m||!o)return;
+  b.classList.remove('open');b.setAttribute('aria-expanded','false');
+  m.classList.remove('open');m.setAttribute('aria-hidden','true');
+  o.classList.remove('open');document.body.style.overflow='';
+}
 
 /* ════ FULL TRANSLATION MAP ════ */
 var D = {
@@ -836,10 +896,16 @@ function applyLang(l) {
   var t = D[l];
   document.documentElement.setAttribute('lang', l);
   document.documentElement.setAttribute('dir', l==='he'?'rtl':'ltr');
+  closeMobileMenu();
   /* Nav */ set('nName',t.nName); set('nAbout',t.nAbout); set('nServices',t.nServices);
   set('nContact',t.nContact); set('nBook',t.nBook);
   document.getElementById('langBtn').textContent = t.langBtn;
   document.getElementById('langBtn').setAttribute('aria-label', t.langLabel);
+  /* Mobile menu */
+  set('mmAbout',t.nAbout); set('mmServices',t.nServices);
+  set('mmContact',t.nContact); set('mmBook',t.nBook);
+  var burger=document.getElementById('navBurger');
+  if(burger) burger.setAttribute('aria-label', l==='he'?'תפריט':'Menu');
   /* Hero */
   var h1=document.getElementById('heroH1');
   if(h1){h1.textContent=t.heroH1; h1.style.fontWeight=l==='he'?'200':'300';}
@@ -901,7 +967,7 @@ function sendWA() {
   var msg  = (document.getElementById('fMsg').value || '').trim();
   var text = t.waMsg.replace('{name}',name).replace('{phone}',phone);
   if (msg) text += ' — ' + msg;
-  window.open('https://wa.me/9720508724699?text='+encodeURIComponent(text),'_blank','noopener');
+  window.open('https://wa.me/972508724699?text='+encodeURIComponent(text),'_blank','noopener');
 }
 
 /* ── Scroll reveal ── */
@@ -912,17 +978,6 @@ function sendWA() {
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target);}});
   },{threshold:0.08,rootMargin:'0px 0px -24px 0px'});
   items.forEach(function(el){ro.observe(el);});
-})();
-
-/* ── AS Badge ── */
-(function(){
-  var badge=document.getElementById('badge');
-  var col=badge&&badge.closest('.about-img-col');
-  if(!badge||!col||!window.IntersectionObserver){if(badge)badge.classList.add('on');return;}
-  var bo=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){badge.classList.toggle('on',e.isIntersecting);});
-  },{threshold:0.2});
-  bo.observe(col);
 })();
 
 /* ── Nav shrink + scroll arrow ── */
