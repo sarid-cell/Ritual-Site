@@ -14,7 +14,7 @@
   gtag('config', 'G-WTC677VX5C');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>RITUAL | אביה שריד — עיצוב גבות פרימיום בעמק חפר</title>
 <meta name="description" content="RITUAL by Avia Sarid — מומחית לעיצוב גבות בעמק חפר, קליניקות באחיטוב ובמשמרת. Powder Shading, Microblading, הסרת איפור קבוע בלייזר, Hollywood Carbon Peel.">
 <meta name="robots" content="index, follow">
@@ -489,7 +489,33 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
   .principles-grid{grid-template-columns:1fr;}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+/* ═══ RESPONSIVE FIXES ═══ */
+html { overflow-x: hidden !important; }
+.badge { bottom: 10px !important; inset-inline-end: 10px !important; }
 
+@supports (padding: max(0px)) {
+  .nav { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .wa-fab { bottom: max(20px, calc(env(safe-area-inset-bottom) + 10px)); }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .about-img-col:hover img { transform: none !important; }
+}
+
+@media (max-width: 600px) {
+  :root { --px: 16px; }
+  .nav { padding: 0 16px; height: 64px; }
+  .hero-h1 { font-size: clamp(1.6rem, 8vw, 2.4rem) !important; white-space: normal !important; }
+  .hero-actions { flex-direction: column; gap: 16px; }
+  #contact { grid-template-columns: 1fr !important; }
+  .info-row { flex-direction: column !important; align-items: center; }
+  .info-txt { text-align: center !important; }
+}
+
+@media (max-width: 375px) {
+  .nav-brand .name { display: none; }
+  .btn-book-nav { padding: 6px 12px; font-size: 0.7rem; }
+}
 </style>
 </head>
 <body>
