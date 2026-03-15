@@ -455,7 +455,6 @@ footer{background:var(--bg);border-top:1px solid rgba(74,67,58,.08);padding:36px
 @media(max-width:960px){
   .nav-burger{display:flex;}
   .mobile-menu{display:block;}
-  .mobile-overlay{display:block;}
 }
 
 /* ════ REVEAL ════ */
@@ -770,6 +769,7 @@ function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({be
 function toggleMobileMenu(){var m=document.getElementById('mobileMenu');if(m.classList.contains('open'))closeMobileMenu();else openMobileMenu();}
 function openMobileMenu(){
   var b=document.getElementById('navBurger'),m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay');
+  o.style.display='block';
   b.classList.add('open');b.setAttribute('aria-expanded','true');
   m.classList.add('open');m.setAttribute('aria-hidden','false');
   o.classList.add('open');document.body.style.overflow='hidden';
@@ -779,7 +779,7 @@ function closeMobileMenu(){
   if(!b||!m||!o)return;
   b.classList.remove('open');b.setAttribute('aria-expanded','false');
   m.classList.remove('open');m.setAttribute('aria-hidden','true');
-  o.classList.remove('open');document.body.style.overflow='';
+  o.classList.remove('open');o.style.display='none';document.body.style.overflow='';
 }
 
 /* ════ FULL TRANSLATION MAP ════ */
