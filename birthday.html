@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbie Chaos Generator 💥</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080400;
+      color: #f5f3ee;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ═══ SCREENS ═══ */
+    .screen {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .screen.active { display: flex; }
+
+    /* ═══ INTRO ═══ */
+    #s-intro { position: relative; text-align: center; overflow: hidden; }
+
+    .fire-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 14% 78%, rgba(255,78,0,.78) 0%, transparent 65%),
+        radial-gradient(ellipse 48% 62% at 86% 44%, rgba(210,28,0,.58) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 38% at 50% 96%, rgba(90,12,0,.95) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 42% at 44% 14%, rgba(255,130,0,.32) 0%, transparent 58%),
+        radial-gradient(ellipse 35% 30% at 70% 88%, rgba(180,50,0,.4) 0%, transparent 60%),
+        #080400;
+      animation: firePulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes firePulse {
+      0%  { opacity: .88; transform: scale(1); }
+      100%{ opacity: 1;   transform: scale(1.035); }
+    }
+
+    .intro-z { position: relative; z-index: 1; max-width: 600px; }
+
+    .intro-eyebrow {
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .32em; text-transform: uppercase;
+      opacity: .48; margin-bottom: 1.1rem;
+    }
+    .intro-title {
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 900; letter-spacing: -.035em; line-height: .9;
+      margin-bottom: 1.6rem;
+    }
+    .intro-sub {
+      font-size: clamp(.95rem, 2.5vw, 1.3rem);
+      opacity: .62; line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* ═══ FORM ═══ */
+    #s-form { gap: 0; }
+    .form-wrap { width: 100%; max-width: 500px; }
+
+    .progress-bar { display: flex; gap: 6px; margin-bottom: 2.5rem; }
+    .pdot {
+      height: 4px; border-radius: 2px;
+      background: rgba(255,255,255,.16);
+      transition: all .4s; flex: 1;
+    }
+    .pdot.done   { background: rgba(255,255,255,.45); }
+    .pdot.active { background: #fff; }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .step-label {
+      font-size: .66rem; font-weight: 700;
+      letter-spacing: .28em; text-transform: uppercase;
+      opacity: .42; margin-bottom: .5rem;
+    }
+    .step-title {
+      font-size: clamp(1.6rem, 5.5vw, 2.5rem);
+      font-weight: 900; line-height: 1.1;
+      margin-bottom: 1.8rem;
+    }
+
+    .field { margin-bottom: 1.2rem; }
+    .field label {
+      display: block; font-size: .68rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      opacity: .48; margin-bottom: .5rem;
+    }
+    .field input {
+      width: 100%; padding: .9rem 1.15rem;
+      background: rgba(255,255,255,.07);
+      border: 1.5px solid rgba(255,255,255,.13);
+      border-radius: 10px; color: #fff;
+      font-size: 1.05rem; font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color .2s;
+    }
+    .field input:focus { border-color: rgba(255,255,255,.5); }
+
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
+    .choice {
+      padding: .95rem 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(255,255,255,.11);
+      border-radius: 12px; color: #fff;
+      font-size: .88rem; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all .15s;
+      text-align: center; line-height: 1.5; user-select: none;
+    }
+    .choice:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); transform: translateY(-1px); }
+    .choice.selected { background: rgba(255,255,255,.18); border-color: #fff; font-weight: 700; }
+
+    .step-actions { margin-top: 2rem; }
+
+    /* ═══ RESULT ═══ */
+    #s-result { gap: 1.5rem; }
+
+    #barbie-card {
+      width: min(340px, 88vw);
+      aspect-ratio: 3/4;
+      position: relative; overflow: hidden;
+      border-radius: 18px; background: #060300;
+    }
+
+    #card-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+    }
+
+    .card-figure {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; padding-top: 5%;
+    }
+
+    /* ─── CSS Barbie ─── */
+    .b-wrap {
+      display: flex; flex-direction: column;
+      align-items: center;
+    }
+
+    /* Ponytail */
+    .b-pt {
+      width: 14px; height: 52px;
+      background: linear-gradient(to bottom, #E8C840, #C8A828);
+      border-radius: 7px;
+      margin-bottom: -7px; z-index: 1;
+    }
+    /* Hair base */
+    .b-hair {
+      width: 82px; height: 52px;
+      background: linear-gradient(160deg, #EDCF48 0%, #C8A828 100%);
+      border-radius: 42px 42px 0 0;
+      margin-bottom: -10px; z-index: 1;
+    }
+    /* Head */
+    .b-head {
+      width: 70px; height: 80px;
+      background: linear-gradient(160deg, #F5CDA0 0%, #E8B880 100%);
+      border-radius: 50%;
+      position: relative; z-index: 2;
+    }
+    /* Sunglasses */
+    .b-glasses {
+      position: absolute; top: 28px; left: 50%;
+      transform: translateX(-50%);
+      width: 67px; display: flex;
+      align-items: center;
+    }
+    .b-gl { flex: 1; height: 15px; background: #0c0c0c; border-radius: 3px; }
+    .b-br { width: 5px; height: 3px; background: #2a2a2a; flex-shrink: 0; }
+    /* Subtle lips */
+    .b-lips {
+      position: absolute; bottom: 16px; left: 50%;
+      transform: translateX(-50%);
+      width: 22px; height: 7px;
+      background: #d4847a;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Neck */
+    .b-neck {
+      width: 20px; height: 18px;
+      background: linear-gradient(to bottom, #F0C898, #E8B880);
+      margin-top: -6px; z-index: 1;
+    }
+    /* Hoodie */
+    .b-hoodie {
+      width: min(205px, 60vw);
+      background: rgba(250,249,246,.96);
+      border-radius: 10px 10px 0 0;
+      padding: 18px 16px 55px;
+      text-align: center; color: #111;
+      position: relative; z-index: 2;
+      dir: ltr;
+    }
+    .b-strings {
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 18px;
+    }
+    .b-str {
+      width: 3px; height: 24px;
+      background: rgba(0,0,0,.1);
+      border-radius: 2px;
+    }
+    .b-str:first-child { transform: rotate(-7deg); }
+    .b-str:last-child  { transform: rotate(7deg); }
+
+    .b-slogan {
+      font-size: .88rem; font-weight: 900;
+      letter-spacing: .04em; line-height: 1.3;
+      text-transform: uppercase;
+      margin-top: 20px;
+      direction: ltr;
+    }
+
+    /* Card bottom strip */
+    .card-strip {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 5;
+      background: rgba(250,249,246,.96);
+      padding: 9px 14px 11px;
+      text-align: center; color: #111;
+      direction: ltr;
+    }
+    .strip-name  { font-size: .68rem; font-weight: 900; letter-spacing: .26em; text-transform: uppercase; }
+    .strip-since { font-size: .58rem; font-weight: 700; letter-spacing: .2em; opacity: .4;  text-transform: uppercase; margin-top: 2px; }
+
+    /* Result buttons */
+    .result-actions { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ═══ BUTTONS ═══ */
+    .btn {
+      display: inline-block;
+      padding: .9rem 2.3rem; border-radius: 50px; border: none;
+      font-family: 'Inter', sans-serif; font-weight: 900;
+      font-size: .88rem; letter-spacing: .1em; text-transform: uppercase;
+      cursor: pointer; transition: transform .15s;
+    }
+    .btn:hover  { transform: scale(1.05); }
+    .btn:active { transform: scale(.97); }
+    .btn-white  { background: #f5f3ee; color: #111; }
+    .btn-ghost  { background: transparent; color: #f5f3ee; border: 2px solid rgba(255,255,255,.32); }
+    .btn-ghost:hover { border-color: #fff; }
+
+    /* Error shake */
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-5px); }
+      75%      { transform: translateX(5px); }
+    }
+    .shake { animation: shake .28s ease; }
+
+    /* Fade-in for result */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #s-result.active #barbie-card { animation: fadeUp .5s ease forwards; }
+    #s-result.active .result-actions { animation: fadeUp .5s .15s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ SCREEN 1: INTRO ══════════════ -->
+<div class="screen active" id="s-intro">
+  <div class="fire-bg"></div>
+  <div class="intro-z">
+    <p class="intro-eyebrow">Happy Birthday Generator</p>
+    <h1 class="intro-title">BARBIE<br>CHAOS<br>GENERATOR</h1>
+    <p class="intro-sub">
+      העולם משתגע.<br>
+      את ממשיכה.<br>
+      מה הסלוגן שלך לשנה הבאה?
+    </p>
+    <button class="btn btn-white" onclick="gotoForm()">בואי נגלה 💥</button>
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN 2: FORM ══════════════ -->
+<div class="screen" id="s-form">
+  <div class="form-wrap">
+    <div class="progress-bar">
+      <div class="pdot active" id="pd1"></div>
+      <div class="pdot"        id="pd2"></div>
+      <div class="pdot"        id="pd3"></div>
+    </div>
+
+    <!-- Step 1: Name + Year -->
+    <div class="step active" id="step1">
+      <p class="step-label">שלב 1 מתוך 3</p>
+      <h2 class="step-title">קודם כל,<br>מי את?</h2>
+      <div class="field">
+        <label>שמך</label>
+        <input type="text"   id="in-name" placeholder="שירה..."  autocomplete="off" />
+      </div>
+      <div class="field">
+        <label>שנת לידה</label>
+        <input type="number" id="in-year" placeholder="1982" min="1940" max="2015" />
+      </div>
+      <div class="step-actions">
+        <button class="btn btn-white" onclick="step1Next()">המשך ←</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Q1 -->
+    <div class="step" id="step2">
+      <p class="step-label">שלב 2 מתוך 3</p>
+      <h2 class="step-title">אסטרטגיית<br>ההישרדות שלך?</h2>
+      <div class="choices" id="choices1">
+        <div class="choice" data-q="1" data-v="A" onclick="pick(this)">🎂 אוכלת עוגה ומתעלמת</div>
+        <div class="choice" data-q="1" data-v="B" onclick="pick(this)">🎨 יוצרת דברים יפים</div>
+        <div class="choice" data-q="1" data-v="C" onclick="pick(this)">😎 שמה משקפיים ומתקדמת</div>
+        <div class="choice" data-q="1" data-v="D" onclick="pick(this)">💃 נראית מדהים בכל מצב</div>
+      </div>
+      <div class="step-actions">
+        <button class="btn btn-white" onclick="step2Next()">המשך ←</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Q2 -->
+    <div class="step" id="step3">
+      <p class="step-label">שלב 3 מתוך 3</p>
+      <h2 class="step-title">כשהעולם<br>משתגע, את...</h2>
+      <div class="choices" id="choices2">
+        <div class="choice" data-q="2" data-v="A" onclick="pick(this)">🔄 מחליפה נושא</div>
+        <div class="choice" data-q="2" data-v="B" onclick="pick(this)">🕯️ מוסיפה עוד נרות</div>
+        <div class="choice" data-q="2" data-v="C" onclick="pick(this)">📸 מצלמת ומתעדת</div>
+        <div class="choice" data-q="2" data-v="D" onclick="pick(this)">🎧 שמה אוזניות</div>
+      </div>
+      <div class="step-actions">
+        <button class="btn btn-white" onclick="step3Next()">גנרטי לי סלוגן 💥</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ SCREEN 3: RESULT ══════════════ -->
+<div class="screen" id="s-result">
+
+  <div id="barbie-card">
+    <canvas id="card-canvas"></canvas>
+
+    <div class="card-figure">
+      <div class="b-wrap">
+        <!-- Ponytail -->
+        <div class="b-pt"></div>
+        <!-- Hair base -->
+        <div class="b-hair"></div>
+        <!-- Head -->
+        <div class="b-head">
+          <div class="b-glasses">
+            <div class="b-gl"></div>
+            <div class="b-br"></div>
+            <div class="b-gl"></div>
+          </div>
+          <div class="b-lips"></div>
+        </div>
+        <!-- Neck -->
+        <div class="b-neck"></div>
+        <!-- Hoodie -->
+        <div class="b-hoodie">
+          <div class="b-strings">
+            <div class="b-str"></div>
+            <div class="b-str"></div>
+          </div>
+          <div class="b-slogan" id="slogan-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-strip">
+      <div class="strip-name"  id="strip-name"></div>
+      <div class="strip-since" id="strip-since"></div>
+    </div>
+  </div>
+
+  <div class="result-actions">
+    <button class="btn btn-white" onclick="downloadCard()">שמור כתמונה ↓</button>
+    <button class="btn btn-ghost" onclick="resetAll()">נסי שוב</button>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+'use strict';
+
+/* ── State ── */
+const S = { name: '', year: 1982, q1: null, q2: null };
+let raf = null;
+
+/* ── Slogan matrix [q1][q2] ── */
+const SLOGANS = {
+  AA: 'CAKE FIRST.\nCHAOS LATER.',
+  AB: 'MORE CANDLES.\nMORE CAKE.',
+  AC: 'DOCUMENTING\nTHE CHAOS.',
+  AD: 'SUGAR RUSH\nSURVIVOR.',
+  BA: 'BEAUTY\nIN THE RUINS.',
+  BB: 'ADDING LIGHT\nTO THE CHAOS.',
+  BC: 'ART FROM\nAPOCALYPSE.',
+  BD: 'ART OVER\nANXIETY.',
+  CA: 'SUNGLASSES ON.\nSUBJECT CHANGED.',
+  CB: 'TOO BRIGHT\nTO LOOK AT.',
+  CC: 'CHAOS LOOKS\nGOOD ON ME.',
+  CD: "CAN'T SEE.\nSTILL SERVING.",
+  DA: 'TOO GLAM\nTO GIVE A DAMN.',
+  DB: 'FABULOUS AT\nEVERY EXPLOSION.',
+  DC: null,  /* → SERVING LOOKS SINCE {year} */
+  DD: 'ICON. LEGEND.\nSTILL HERE.',
+};
+
+/* ── Helpers ── */
+function show(id) { document.getElementById(id).classList.add('active'); }
+function hide(id) { document.getElementById(id).classList.remove('active'); }
+function shake(el) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+
+/* ── Navigation ── */
+function gotoForm() { hide('s-intro'); show('s-form'); }
+
+/* ── Step 1 ── */
+function step1Next() {
+  const nameEl = document.getElementById('in-name');
+  const yearEl = document.getElementById('in-year');
+  const name   = nameEl.value.trim();
+  const year   = parseInt(yearEl.value);
+  if (!name)                          { shake(nameEl); nameEl.focus(); return; }
+  if (!year || year < 1940 || year > 2015) { shake(yearEl); yearEl.focus(); return; }
+  S.name = name; S.year = year;
+  switchStep(1, 2);
+}
+
+/* ── Step 2 ── */
+function step2Next() {
+  if (!S.q1) { shake(document.getElementById('choices1')); return; }
+  switchStep(2, 3);
+}
+
+/* ── Step 3 ── */
+function step3Next() {
+  if (!S.q2) { shake(document.getElementById('choices2')); return; }
+  buildResult();
+}
+
+function switchStep(from, to) {
+  document.getElementById('step' + from).classList.remove('active');
+  document.getElementById('step' + to).classList.add('active');
+  for (let i = 1; i <= 3; i++) {
+    const d = document.getElementById('pd' + i);
+    d.className = 'pdot' + (i < to ? ' done' : i === to ? ' active' : '');
+  }
+}
+
+function pick(el) {
+  const q = el.dataset.q;
+  document.querySelectorAll('.choice[data-q="' + q + '"]')
+    .forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  S['q' + q] = el.dataset.v;
+}
+
+/* ── Build result ── */
+function buildResult() {
+  const key    = S.q1 + S.q2;
+  const raw    = SLOGANS[key];
+  const slogan = (raw != null) ? raw : 'SERVING LOOKS\nSINCE ' + S.year;
+
+  document.getElementById('slogan-text').innerHTML = slogan.replace(/\n/g, '<br>');
+  document.getElementById('strip-name').textContent  = S.name.toUpperCase();
+  document.getElementById('strip-since').textContent = 'ICON SINCE ' + S.year;
+
+  hide('s-form');
+  show('s-result');
+  initCanvas();
+}
+
+/* ── Canvas explosion animation ── */
+function initCanvas() {
+  const card   = document.getElementById('barbie-card');
+  const canvas = document.getElementById('card-canvas');
+  canvas.width  = card.offsetWidth;
+  canvas.height = card.offsetHeight;
+
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const particles = [];
+  let t = 0;
+
+  function spawn() {
+    for (let i = 0; i < 2; i++) {
+      particles.push({
+        x:     Math.random() * W,
+        y:     H * (.38 + Math.random() * .62),
+        vx:    (Math.random() - .5) * 2.2,
+        vy:    -(Math.random() * 2.4 + .7),
+        r:     Math.random() * 20 + 9,
+        life:  1,
+        decay: .011 + Math.random() * .01,
+        smoke: Math.random() > .52,
+      });
+    }
+  }
+
+  function frame() {
+    t += .016;
+    ctx.clearRect(0, 0, W, H);
+
+    /* Dark base */
+    ctx.fillStyle = '#060200';
+    ctx.fillRect(0, 0, W, H);
+
+    /* Fire glow – left column */
+    const gl = ctx.createRadialGradient(W * .12, H * .75, 0, W * .12, H * .75, W * .48);
+    gl.addColorStop(0, `rgba(255,${68 + Math.sin(t) * 18},0,${.7  + Math.sin(t * 1.2) * .08})`);
+    gl.addColorStop(.55, 'rgba(160,22,0,.28)'); gl.addColorStop(1, 'transparent');
+    ctx.fillStyle = gl; ctx.fillRect(0, 0, W, H);
+
+    /* Fire glow – right column */
+    const gr = ctx.createRadialGradient(W * .88, H * .5, 0, W * .88, H * .5, W * .42);
+    gr.addColorStop(0, `rgba(255,${48 + Math.cos(t * 1.4) * 14},0,${.58 + Math.cos(t * .9) * .08})`);
+    gr.addColorStop(.55, 'rgba(130,16,0,.22)'); gr.addColorStop(1, 'transparent');
+    ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+
+    /* Amber top glow */
+    const gt = ctx.createRadialGradient(W * .5, 0, 0, W * .5, 0, H * .58);
+    gt.addColorStop(0, `rgba(255,148,0,${.13 + Math.sin(t * 2.1) * .04})`);
+    gt.addColorStop(1, 'transparent');
+    ctx.fillStyle = gt; ctx.fillRect(0, 0, W, H);
+
+    /* Particles */
+    spawn();
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      p.life -= p.decay; p.r *= 1.013;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+      const gp = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      if (p.smoke) {
+        gp.addColorStop(0, `rgba(52,36,26,${p.life * .45})`);
+        gp.addColorStop(1, 'transparent');
+      } else {
+        gp.addColorStop(0, `rgba(255,198,55,${p.life * .88})`);
+        gp.addColorStop(.4, `rgba(255,68,0,${p.life * .48})`);
+        gp.addColorStop(1, 'transparent');
+      }
+      ctx.fillStyle = gp;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    /* Darken upper-centre so barbie reads clearly */
+    const gc = ctx.createRadialGradient(W * .5, H * .22, 0, W * .5, H * .22, W * .65);
+    gc.addColorStop(0, 'rgba(6,3,1,.6)'); gc.addColorStop(1, 'transparent');
+    ctx.fillStyle = gc; ctx.fillRect(0, 0, W, H);
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  if (raf) cancelAnimationFrame(raf);
+  frame();
+}
+
+/* ── Download ── */
+function downloadCard() {
+  if (raf) cancelAnimationFrame(raf);
+  html2canvas(document.getElementById('barbie-card'), {
+    scale: 2.5, useCORS: true, backgroundColor: null,
+  }).then(c => {
+    const a = document.createElement('a');
+    a.download = 'barbie-chaos-' + (S.name || 'icon').toLowerCase().replace(/\s/g, '-') + '.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+    initCanvas(); /* restart animation */
+  });
+}
+
+/* ── Reset ── */
+function resetAll() {
+  if (raf) cancelAnimationFrame(raf);
+  S.q1 = null; S.q2 = null;
+  hide('s-result'); show('s-intro');
+  document.querySelectorAll('.step').forEach((s, i) => s.classList.toggle('active', i === 0));
+  document.querySelectorAll('.pdot').forEach((d, i) => d.className = 'pdot' + (i === 0 ? ' active' : ''));
+  document.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+}
+</script>
+</body>
+</html>
